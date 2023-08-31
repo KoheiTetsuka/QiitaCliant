@@ -5,6 +5,7 @@ package com.example.qiitaclient.view.search
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -28,6 +29,11 @@ fun SearchScreen(navController: NavController) {
             val textFieldState = remember { mutableStateOf(TextFieldValue("")) }
             SearchView(textFieldState = textFieldState) {
 
+            }
+            LazyColumn {
+                items(50) {
+                    SearchResultCell()
+                }
             }
             Text(text = "検索画面")
             Button(onClick = { navController.navigate("detail") }) {
