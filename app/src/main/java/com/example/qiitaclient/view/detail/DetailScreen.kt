@@ -10,16 +10,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.google.accompanist.web.WebView
+import com.google.accompanist.web.rememberWebViewState
 
 @Composable
-fun DetailScreen() {
-    Scaffold { innerPadding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues = innerPadding)
-        ) {
-            Text(text = "詳細画面")
-        }
-    }
+fun DetailScreen(url: String) {
+    val state = rememberWebViewState(url)
+    WebView(state = state)
 }

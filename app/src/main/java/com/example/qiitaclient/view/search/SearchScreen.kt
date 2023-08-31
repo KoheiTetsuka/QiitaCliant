@@ -1,7 +1,6 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package com.example.qiitaclient.view.search
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -18,6 +17,8 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.navigation.NavController
 import com.example.qiitaclient.view.component.SearchView
 
+@OptIn(ExperimentalMaterial3Api::class)
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SearchScreen(navController: NavController) {
     Scaffold { innerPadding ->
