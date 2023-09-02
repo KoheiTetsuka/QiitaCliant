@@ -1,5 +1,6 @@
 package com.example.qiitaclient.view.search
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -21,9 +22,14 @@ import coil.compose.AsyncImage
 import com.example.qiitaclient.model.Article
 
 @Composable
-fun SearchResultCell(article: Article) {
+fun SearchResultCell(
+    article: Article,
+    onClick: () -> Unit
+) {
     Column(
-        modifier = Modifier.padding(horizontal = 10.dp),
+        modifier = Modifier
+            .padding(horizontal = 10.dp)
+            .clickable { onClick() },
     ) {
         Spacer(modifier = Modifier.height(10.dp))
         Text(text = article.title)

@@ -19,6 +19,8 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.qiitaclient.view.component.SearchView
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -38,14 +40,15 @@ fun SearchScreen(navController: NavController, searchViewModel: SearchViewModel 
             observeArticles.value?.let { articles ->
                 LazyColumn {
                     items(articles) { article ->
-                        SearchResultCell(article)
+                        SearchResultCell(article) {
+                            val encodedUrl =
+                                URLEncoder.encode(article.url, StandardCharsets.UTF_8.toString())
+                            navController.navigate("detail/$encodedUrl")
+                        }
                     }
                 }
             }
-            Text(text = "検索画面")
-            Button(onClick = { navController.navigate("detail") }) {
-                Text(text = "詳細画面へ")
-            }
+            Text(text = "検索をしてください。")
         }
     }
 }

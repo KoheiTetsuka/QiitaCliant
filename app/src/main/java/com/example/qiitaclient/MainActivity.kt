@@ -44,8 +44,12 @@ fun MainNavHost(navController: NavHostController) {
         composable(route = "search") {
             SearchScreen(navController = navController)
         }
-        composable(route = "detail") {
-            DetailScreen("https://qiita.com/masato_ishikawa/items/7dc44d3bf28aedf8d2e2")
+        composable(route = "detail/{url}") {
+            it.arguments?.getString("url")?.let { url ->
+                DetailScreen(url = url)
+            } ?: run {
+                DetailScreen("https://qiita.com/masato_ishikawa/items/7dc44d3bf28aedf8d2e2")
+            }
         }
     }
 }
